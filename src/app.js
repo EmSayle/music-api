@@ -27,8 +27,11 @@ console.log(7, 'artist record updated');
 app.delete('/artists/:id', artist.delete);
 console.log(8, 'artist deleted');
 
-app.post('/artist/:id/albums', album.postAlbum);
+app.post('/artists/:id/albums', album.postAlbum);
 console.log(9, 'album added');
+
+app.get('/albums', album.find);
+console.log(10, 'album found');
 
 
 module.exports = app;

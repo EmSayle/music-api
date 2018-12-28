@@ -22,3 +22,10 @@ exports.postAlbum = (req, res) => {
     });
   });
 };
+
+exports.find = (req, res) => {
+  Album.find()
+    .then((albums) => {
+      res.status(200).json(albums);
+    });
+};
