@@ -27,9 +27,6 @@ console.log(7, 'artist record updated');
 app.delete('/artists/:id', artist.delete);
 console.log(8, 'artist deleted');
 
-// app.post('/artist/:id/albums', album.postAlbum);
-// console.log(9, 'add album');
-
 app.post('/artist/:id/albums', album.postAlbum);
 console.log(9, 'album added');
 
