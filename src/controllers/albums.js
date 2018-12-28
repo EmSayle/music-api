@@ -2,7 +2,7 @@ const Album = require('../models/album');
 const Artist = require('../models/artist');
 
 exports.postAlbum = (req, res) => {
-  Artist.findById(req.params.artistId, (err, artist) => {
+  Artist.findById(req.params.id, (err, artist) => {
     if (err) {
       res.json('Artist does not exist');
     }
@@ -18,7 +18,7 @@ exports.postAlbum = (req, res) => {
         res.json('Could not create an album');
       }
 
-      res.json(createdAlbum);
+      res.status(201).json(createdAlbum);
     });
   });
 };

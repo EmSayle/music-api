@@ -22,7 +22,7 @@ describe('/albums', () => {
   });
 
   describe('POST /artists/:artistId/albums', () => {
-    xit('creates a new album for a given artist', (done) => {
+    it('creates a new album for a given artist', (done) => {
       chai.request(server)
         .post(`/artists/${artist._id}/albums`)
         .send({
