@@ -29,3 +29,13 @@ exports.find = (req, res) => {
       res.status(200).json(albums);
     });
 };
+
+exports.findById = (req, res) => {
+  Album.findById(req.params.id, (err, album) => {
+    if (err || album === null) {
+      res.status(404).json({ error: 'The artist could not be found.' });
+    } else {
+      res.status(200).json(album);
+    }
+  });
+};
