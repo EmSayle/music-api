@@ -5,11 +5,11 @@ const Song = require('../models/song');
 exports.postSong = (req, res) => {
   Album.findById(req.params.id, (albumNotFoundErr, album) => {
     if (albumNotFoundErr) {
-      res.json('Album does not exist');
+      res.json({ error: 'Album does not exist' });
     }
     Artist.findById(req.body.id, (artistNotFoundErr, artist) => {
       if (artistNotFoundErr) {
-        res.json('Artist does not exist');
+        res.json({ error: 'Artist does not exist' });
       }
 
       const newSong = new Song({
@@ -19,10 +19,11 @@ exports.postSong = (req, res) => {
       });
 
       newSong.save((createErr, createdSong) => {
+        console.log(req.body);
+        
         if (createErr) {
-          res.json('Could not save song');
+          res.json({ error: 'Could not save song' });
         }
-
         res.status(201).json(createdSong);
       });
     });
