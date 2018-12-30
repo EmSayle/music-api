@@ -2,7 +2,7 @@
 const express = require('express');
 const artist = require('./controllers/artists.js');
 const album = require('./controllers/albums');
-const song = require('./models/song');
+const song = require('./controllers/songs');
 
 const app = express();
 console.log(1, 'app created');
@@ -39,5 +39,11 @@ console.log(11, 'found album by id');
 
 app.post('/album/:id/song', song.postSong);
 console.log(11, 'song added');
+
+app.get('/songs', song.find);
+console.log(12, 'found songs');
+
+app.get('/songs/:id', song.findById);
+console.log(13, 'song found by id');
 
 module.exports = app;

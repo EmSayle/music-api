@@ -28,3 +28,20 @@ exports.postSong = (req, res) => {
     });
   });
 };
+
+exports.find = (req, res) => {
+  Song.find()
+    .then((songs) => {
+      res.status(200).json(songs);
+    });
+};
+
+exports.findById = (req, res) => {
+  Song.findById(req.params.id, (err, song) => {
+    if (err || song === null) {
+      res.json({ error: 'could not find song' });
+    } else {
+      res.status(200).json(song);
+    }
+  });
+};
